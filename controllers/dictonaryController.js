@@ -10,10 +10,19 @@ exports.dictonary = function(req, res){
     res.render('index', {text: `${NOT_IMPLEMENTED}: one dictonary`})
 }
 
+
+//should send form for dictonary
 exports.dictonary_create_get = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary create get`})
+    res.render('form', {
+        action: "/dictonary/create", 
+        method: "POST",
+        text: "create dictonary",
+        inputs: ['name', 'author', 'description']
+    })
 }
 
+
+//should post new dictonary to database
 exports.dictonary_create_post = function(req, res){
     res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary create post`})
 }

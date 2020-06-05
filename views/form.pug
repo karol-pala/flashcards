@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    div
+        h2=text
+        form(action = action, method = method)
+            each val in inputs
+                div
+                    label(for = val) #{val}
+                    input(name = val)
+            button(type='submit') Send

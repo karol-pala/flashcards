@@ -4,6 +4,13 @@ const app = express();
 
 const catalogRouter = require('./routes/catalog')
 
+//connect to mongo
+const mongoose = require('mongoose');
+const mongoDB = 'mongodb+srv://krl_pc:si74rtb32@cluster0-qofpe.mongodb.net/flashcards?retryWrites=true&w=majority';
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, "MongoDB connection error:"));
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
