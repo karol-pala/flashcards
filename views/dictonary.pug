@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div
+        h2=dict.name
+        h3=dict.author
+        p=dict.description
+        a(href=dict.update) Update
+        form(action=dict.delete, method="POST")
+            button(type="submit") Delete

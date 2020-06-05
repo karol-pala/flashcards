@@ -1,7 +1,5 @@
 const Dictonary = require('../models/dictonary')
 
-const NOT_IMPLEMENTED = "NOT IMPLEMENTED"
-
 exports.dictonary_list = function(req, res){
     Dictonary.find()
         .exec(function(err, list){
@@ -14,7 +12,16 @@ exports.dictonary_list = function(req, res){
 }
 
 exports.dictonary = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: one dictonary`})
+    const id = req.params.id;
+    Dictonary.findById(id).exec(function(err, response){
+        if(err){
+            res.render('index', {text: 'Databse error'})
+        } else {
+            res.render('dictonary', {
+                dict: response
+            })
+        }
+    })
 }
 
 
@@ -70,10 +77,6 @@ exports.dictonary_update_post = function(req, res){
         res.redirect('/');
     })
 }
-
-// exports.dictonary_delete_get = function(req, res){
-//     const id = req.params.id;
-// }
 
 exports.dictonary_delete_post = function(req, res){
     const id = req.params.id;

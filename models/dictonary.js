@@ -22,4 +22,10 @@ DictonarySchema
     return '/catalog/dictonary/delete/' + this.id
 })
 
+DictonarySchema
+.virtual('show')
+.get(function(){
+    return '/catalog/dictonary/' + this.id
+})
+
 module.exports = mongoose.model("Dictonary", DictonarySchema);
