@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer();
 const app = express();
 
 const catalogRouter = require('./routes/catalog')
@@ -13,6 +16,11 @@ db.on('error', console.error.bind(console, "MongoDB connection error:"));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(upload.array());
+app.use(express.static('public'));
 
 app.get('/', function(req, res){
     res.redirect('/catalog');

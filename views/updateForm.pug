@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    div
+        h2=text
+        form(action = action, method = method)
+            div
+                label(for='name') name:
+                input(name='name' value=dict.name)
+            div
+                label(for='author') author:
+                input(name='author' value=dict.author)
+            div
+                label(for='description') description
+                input(name='description', value=dict.description)
+            button(type='submit') Send 

@@ -16,7 +16,7 @@ router.get('/dictonary/create', dictonary_controller.dictonary_create_get);
 router.post('/dictonary/create', dictonary_controller.dictonary_create_post);
 
 //dict update get
-router.get('/dictonary/udpate/:id', dictonary_controller.dictonary_update_get);
+router.get('/dictonary/update/:id', dictonary_controller.dictonary_update_get);
 
 //dict update post
 router.post('/dictonary/update/:id', dictonary_controller.dictonary_update_post);

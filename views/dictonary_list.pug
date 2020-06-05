@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1=title
+    ul
+        each val in dict_list
+            li
+                h2 #{val.name}
+                h3 #{val.author}
+                p #{val.description}
+                a(href=val.update)
+                    button Edit
+                a(href=val.delete)
+                    button Delete
+        else
+            li There is no dictonaries in this database

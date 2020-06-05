@@ -3,7 +3,14 @@ const Dictonary = require('../models/dictonary')
 const NOT_IMPLEMENTED = "NOT IMPLEMENTED"
 
 exports.dictonary_list = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary list`})
+    Dictonary.find()
+        .exec(function(err, list){
+            if(err) {return next(err)}
+            res.render('dictonary_list', {
+                title: "Dictonaries",
+                dict_list: list
+            })
+        })
 }
 
 exports.dictonary = function(req, res){
@@ -14,7 +21,7 @@ exports.dictonary = function(req, res){
 //should send form for dictonary
 exports.dictonary_create_get = function(req, res){
     res.render('form', {
-        action: "/dictonary/create", 
+        action: "/catalog/dictonary/create", 
         method: "POST",
         text: "create dictonary",
         inputs: ['name', 'author', 'description']
@@ -24,19 +31,50 @@ exports.dictonary_create_get = function(req, res){
 
 //should post new dictonary to database
 exports.dictonary_create_post = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary create post`})
+    const dictInfo = req.body;
+    let newDict;
+    if(!dictInfo.name || !dictInfo.author || !dictInfo.description){
+        res.render('index', {text: "Error! Wrong data"})
+    } else {
+        newDict = new Dictonary({
+            name: dictInfo.name,
+            author: dictInfo.author,
+            description: dictInfo.description
+        })
+    }
+    newDict.save('err', function(err, Dictonary){
+        if(err){
+            res.render('index', {text: 'Database error'});
+        } else {
+            res.render('index', {
+                text: 'Dictonary added'
+            })
+        }
+    })
 }
 
 exports.dictonary_update_get = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary update get`})
+    const id = req.params.id;
+    Dictonary.findById(id).exec(function(err, dict){
+        if(err) return next(err);
+        res.render('updateForm', {
+            text: 'update form',
+            action: dict.url,
+            method: "POST",
+            dict: dict
+        })
+    })
 }
 
 exports.dictonary_update_post = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary update post`})
+    Dictonary.findByIdAndUpdate(req.params.id, req.body, function(err, response){
+        if(err) res.send(`Error in updating dictonary with id: ${req.params.id}`)
+        res.redirect('/');
+    })
 }
 
 exports.dictonary_delete_get = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary delete get`})
+    const id = req.params.id;
 }
 
 exports.dictonary_delete_post = function(req, res){
