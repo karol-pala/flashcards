@@ -10,7 +10,7 @@ block content
                 p #{val.description}
                 a(href=val.update)
                     button Edit
-                a(href=val.delete)
-                    button Delete
+                form(action = val.delete, method = "POST")
+                    button(type = 'submit') Delete
         else
             li There is no dictonaries in this database

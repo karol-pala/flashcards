@@ -46,9 +46,7 @@ exports.dictonary_create_post = function(req, res){
         if(err){
             res.render('index', {text: 'Database error'});
         } else {
-            res.render('index', {
-                text: 'Dictonary added'
-            })
+            res.redirect('/');
         }
     })
 }
@@ -73,10 +71,17 @@ exports.dictonary_update_post = function(req, res){
     })
 }
 
-exports.dictonary_delete_get = function(req, res){
-    const id = req.params.id;
-}
+// exports.dictonary_delete_get = function(req, res){
+//     const id = req.params.id;
+// }
 
 exports.dictonary_delete_post = function(req, res){
-    res.render('index', {text: `${NOT_IMPLEMENTED}: dixtonary delete post`})
+    const id = req.params.id;
+    Dictonary.findByIdAndDelete(id, function(err){
+        if(err){
+            res.render('index', {text: 'Database error'})
+        } else {
+            res.redirect('/')
+        }
+    })
 }

@@ -22,7 +22,7 @@ router.get('/dictonary/update/:id', dictonary_controller.dictonary_update_get);
 router.post('/dictonary/update/:id', dictonary_controller.dictonary_update_post);
 
 //dict delete get
-router.get('/dictonary/delete/:id', dictonary_controller.dictonary_delete_get);
+// router.get('/dictonary/delete/:id', dictonary_controller.dictonary_delete_get);
 
 //dict delete post
 router.post('/dictonary/delete/:id', dictonary_controller.dictonary_delete_post);
