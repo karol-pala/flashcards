@@ -6,6 +6,10 @@ exports.dictonary_list = function(req, res){
     res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary list`})
 }
 
+exports.dictonary = function(req, res){
+    res.render('index', {text: `${NOT_IMPLEMENTED}: one dictonary`})
+}
+
 exports.dictonary_create_get = function(req, res){
     res.render('index', {text: `${NOT_IMPLEMENTED}: dictonary create get`})
 }

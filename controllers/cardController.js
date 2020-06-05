@@ -7,6 +7,10 @@ exports.card_list = function(req, res) {
     res.render('index', {text: `${NOT_IMPLEMENTED}: card list`})
 }
 
+exports.card = function(req, res) {
+    res.render('index', {text: `${NOT_IMPLEMENTED}: card`})
+}
+
 exports.card_create_get = function(req, res){
     res.render('index', {text: `${NOT_IMPLEMENTED}: card create get`})
 }

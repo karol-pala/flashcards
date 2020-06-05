@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const DictonarySchema = new Schema(
     {
-        name: {type: String, required=true},
-        author: {type: String, required=true}
+        name: {type: String, required: true},
+        author: {type: String, required: true}
     }
 )
 
