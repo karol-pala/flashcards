@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form(action = action, method = "POST")
+        div
+            label(for = 'firstSide') first side
+            input(name = 'firstSide')
+        div
+            label(for = 'secondSide') second side
+            input(name = 'secondSide')
+        div
+            button(type = 'submit') Send

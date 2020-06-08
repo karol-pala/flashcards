@@ -32,19 +32,19 @@ router.get('/dictonary/:id', dictonary_controller.dictonary);
 
 //CARD ROUTES
 
-router.get('/card/create', card_controller.card_create_get);
+router.get('/dictonary/:id/card/create', card_controller.card_create_get);
 
-router.post('/card/create', card_controller.card_create_post);
+router.post('/dictonary/:id/card/create', card_controller.card_create_post);
 
-router.get('/card/udpate/:id', card_controller.card_update_get);
+router.get('/dictonary/:id/card/:card/update', card_controller.card_update_get);
 
-router.post('/card/update/:id', card_controller.card_update_post);
+router.post('/dictonary/:id/card/:card/update', card_controller.card_update_post);
 
-router.get('/card/delete/:id', card_controller.card_delete_get);
 
-router.post('/card/delete/:id', card_controller.card_delete_post);
+router.post('/dictonary/:id/card/:card/delete', card_controller.card_delete_post);
 
-router.get('/cards', card_controller.card_list);
+//all cards from dictonary
+router.get('/dictonary/:id/cards', card_controller.card_list);
 
 router.get('/card/:id', card_controller.card);
 

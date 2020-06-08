@@ -28,4 +28,17 @@ DictonarySchema
     return '/catalog/dictonary/' + this.id
 })
 
+DictonarySchema
+.virtual('cards')
+.get(function(){
+    return `/catalog/dictonary/${this.id}/cards`
+})
+
+DictonarySchema
+.virtual('create_card')
+.get(function(){
+    return `/catalog/dictonary/${this.id}/card/create`
+})
+
+
 module.exports = mongoose.model("Dictonary", DictonarySchema);

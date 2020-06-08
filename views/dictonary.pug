@@ -6,5 +6,7 @@ block content
         h3=dict.author
         p=dict.description
         a(href=dict.update) Update
+        a(href=dict.cards) Show cards
+        a(href=dict.create_card) Add card
         form(action=dict.delete, method="POST")
             button(type="submit") Delete

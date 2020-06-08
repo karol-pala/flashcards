@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    div
+        ul
+            each val in data
+                li
+                    p #{val.firstSide}
+                    p #{val.secondSide}
+                    a(href=val.update) update
+                    form(action = val.delete method = "POST")
+                        button(type = "submit") delete
