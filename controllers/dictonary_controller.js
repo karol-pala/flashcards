@@ -1,6 +1,7 @@
 const Dictonary = require('../models/dictonary')
 
-exports.dictonary_list = function(req, res){
+//shows all dictonaries
+exports.dictonaryList = function(req, res){
     Dictonary.find()
         .exec(function(err, list){
             if(err) {return next(err)}
@@ -11,6 +12,7 @@ exports.dictonary_list = function(req, res){
         })
 }
 
+//shows one dictonary
 exports.dictonary = function(req, res){
     const id = req.params.id;
     Dictonary.findById(id).exec(function(err, response){
@@ -25,9 +27,9 @@ exports.dictonary = function(req, res){
 }
 
 
-//should send form for dictonary
-exports.dictonary_create_get = function(req, res){
-    res.render('form', {
+//sends form for dictonary
+exports.dictonaryCreateGet = function(req, res){
+    res.render('dictonary_form', {
         action: "/catalog/dictonary/create", 
         method: "POST",
         text: "create dictonary",
@@ -36,8 +38,8 @@ exports.dictonary_create_get = function(req, res){
 }
 
 
-//should post new dictonary to database
-exports.dictonary_create_post = function(req, res){
+//posts new dictonary to database
+exports.dictonaryCreatePost = function(req, res){
     const dictInfo = req.body;
     let newDict;
     if(!dictInfo.name || !dictInfo.author || !dictInfo.description){
@@ -58,11 +60,12 @@ exports.dictonary_create_post = function(req, res){
     })
 }
 
-exports.dictonary_update_get = function(req, res){
+//renders form for updating dictonary
+exports.dictonaryUpdateGet = function(req, res){
     const id = req.params.id;
     Dictonary.findById(id).exec(function(err, dict){
         if(err) return next(err);
-        res.render('updateForm', {
+        res.render('dictonary_update', {
             text: 'update form',
             action: dict.url,
             method: "POST",
@@ -71,14 +74,16 @@ exports.dictonary_update_get = function(req, res){
     })
 }
 
-exports.dictonary_update_post = function(req, res){
+//updates dictonary in DB
+exports.dictonaryUpdatePost = function(req, res){
     Dictonary.findByIdAndUpdate(req.params.id, req.body, function(err, response){
         if(err) res.send(`Error in updating dictonary with id: ${req.params.id}`)
         res.redirect('/');
     })
 }
 
-exports.dictonary_delete_post = function(req, res){
+//deletes dictonary from DB
+exports.dictonaryDeletePost = function(req, res){
     const id = req.params.id;
     Dictonary.findByIdAndDelete(id, function(err){
         if(err){

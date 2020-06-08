@@ -1,31 +1,33 @@
 const Card = require('../models/card');
-const Dictonary = require('../models/dictonary')
 
 const NOT_IMPLEMENTED = "NOT IMPLEMENTED";
 
-
-exports.card_list = function(req, res) {
+//show list of cards, based on dictonary id field in CardSchema
+exports.cardList = function(req, res) {
     Card.find({dictonary: req.params.id})
     .exec(function(err, response){
         if(err){
             res.render('index', {text: 'Database error'})
         } else {
-            res.render('cards', {data: response});
+            res.render('card_list', {data: response});
         }
     })
 }
 
+//show one card, based on dictonary id field in CardSchema and card id
 exports.card = function(req, res) {
     res.render('index', {text: `${NOT_IMPLEMENTED}: card`})
 }
 
-exports.card_create_get = function(req, res){
+//renders form for adding new card
+exports.cardCreateGet = function(req, res){
     res.render('card_form', {
         action: `/catalog/dictonary/${req.params.id}/card/create`
     })
 }
 
-exports.card_create_post = function(req, res){
+//takes data from form and add new Card to DB
+exports.cardCreatePost = function(req, res){
     const cardInfo = req.body;
     let newCard;
     if(!cardInfo.firstSide || !cardInfo.secondSide){
@@ -46,8 +48,8 @@ exports.card_create_post = function(req, res){
     })
 }
 
-
-exports.card_delete_post = function(req, res){
+//deletes Card from DB
+exports.cardDeletePost = function(req, res){
     const id = req.params.card;
     Card.findByIdAndDelete(id, req.body, function(err, response){
         if(err){
@@ -58,7 +60,8 @@ exports.card_delete_post = function(req, res){
     })
 }
 
-exports.card_update_get = function(req, res){
+//renders form for updating Card
+exports.cardUpdateGet = function(req, res){
     const id = req.params.card;
     Card.findById(id).exec(function(err, response){
         if(err){
@@ -69,7 +72,8 @@ exports.card_update_get = function(req, res){
     })
 }
 
-exports.card_update_post = function(req, res){
+//updates Card
+exports.cardUpdatePost = function(req, res){
     Card.findByIdAndUpdate(req.params.card, req.body, function(err, response){
         if(err){
             res.render('index', {text: "database error"})

@@ -31,7 +31,7 @@ DictonarySchema
 DictonarySchema
 .virtual('cards')
 .get(function(){
-    return `/catalog/dictonary/${this.id}/cards`
+    return `/catalog/dictonary/${this.id}/card_list`
 })
 
 DictonarySchema
