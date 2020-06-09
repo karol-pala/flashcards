@@ -2,52 +2,52 @@ const express = require('express');
 const router = express.Router();
 
 const CardController = require('../controllers/card_controller')
-const DictonaryController = require('../controllers/dictonary_controller')
+const DictionaryController = require('../controllers/dictionary_controller')
 
 //home page
-router.get('/', DictonaryController.dictonaryList);
+router.get('/', DictionaryController.dictionaryList);
 
 
 //DICTONARY ROUTES
 
 //dict create get
-router.get('/dictonary/create', DictonaryController.dictonaryCreateGet);
+router.get('/dictionary/create', DictionaryController.dictionaryCreateGet);
 
 //dict create post
-router.post('/dictonary/create', DictonaryController.dictonaryCreatePost);
+router.post('/dictionary/create', DictionaryController.dictionaryCreatePost);
 
 //dict update get
-router.get('/dictonary/update/:id', DictonaryController.dictonaryUpdateGet);
+router.get('/dictionary/:id/update', DictionaryController.dictionaryUpdateGet);
 
 //dict update post
-router.post('/dictonary/update/:id', DictonaryController.dictonaryUpdatePost);
+router.post('/dictionary/:id/update', DictionaryController.dictionaryUpdatePost);
 
 //dict delete post
-router.post('/dictonary/delete/:id', DictonaryController.dictonaryDeletePost);
+router.post('/dictionary/:id/delete', DictionaryController.dictionaryDeletePost);
 
 //show one dict get
-router.get('/dictonary/:id', DictonaryController.dictonary);
+router.get('/dictionary/:id', DictionaryController.dictionary);
 
 
 //CARD ROUTES
 
 //card create get
-router.get('/dictonary/:id/card/create', CardController.cardCreateGet);
+router.get('/dictionary/:id/card/create', CardController.cardCreateGet);
 
 //card create post
-router.post('/dictonary/:id/card/create', CardController.cardCreatePost);
+router.post('/dictionary/:id/card/create', CardController.cardCreatePost);
 
 //card update get
-router.get('/dictonary/:id/card/:card/update', CardController.cardUpdateGet);
+router.get('/dictionary/:id/card/:card/update', CardController.cardUpdateGet);
 
 //card update post
-router.post('/dictonary/:id/card/:card/update', CardController.cardUpdatePost);
+router.post('/dictionary/:id/card/:card/update', CardController.cardUpdatePost);
 
 //card delete
-router.post('/dictonary/:id/card/:card/delete', CardController.cardDeletePost);
+router.post('/dictionary/:id/card/:card/delete', CardController.cardDeletePost);
 
-//all cards from dictonary
-router.get('/dictonary/:id/card_list', CardController.cardList);
+//all cards from dictionary
+router.get('/dictionary/:id/card_list', CardController.cardList);
 
 //one card
 router.get('/card/:id', CardController.card);

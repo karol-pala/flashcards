@@ -2,9 +2,9 @@ const Card = require('../models/card');
 
 const NOT_IMPLEMENTED = "NOT IMPLEMENTED";
 
-//show list of cards, based on dictonary id field in CardSchema
+//show list of cards, based on dictionary id field in CardSchema
 exports.cardList = function(req, res) {
-    Card.find({dictonary: req.params.id})
+    Card.find({dictionary: req.params.id})
     .exec(function(err, response){
         if(err){
             res.render('index', {text: 'Database error'})
@@ -14,7 +14,7 @@ exports.cardList = function(req, res) {
     })
 }
 
-//show one card, based on dictonary id field in CardSchema and card id
+//show one card, based on dictionary id field in CardSchema and card id
 exports.card = function(req, res) {
     res.render('index', {text: `${NOT_IMPLEMENTED}: card`})
 }
@@ -22,7 +22,7 @@ exports.card = function(req, res) {
 //renders form for adding new card
 exports.cardCreateGet = function(req, res){
     res.render('card_form', {
-        action: `/catalog/dictonary/${req.params.id}/card/create`
+        action: `/catalog/dictionary/${req.params.id}/card/create`
     })
 }
 
@@ -34,7 +34,7 @@ exports.cardCreatePost = function(req, res){
         res.render('index', {text: "Wrong data"});
     } else {
         newCard = new Card({
-            dictonary: req.params.id,
+            dictionary: req.params.id,
             firstSide: cardInfo.firstSide,
             secondSide: cardInfo.secondSide
         })
