@@ -46,9 +46,6 @@ router.post('/dictionary/:id/card/:card/update', CardController.cardUpdatePost);
 //card delete
 router.post('/dictionary/:id/card/:card/delete', CardController.cardDeletePost);
 
-//all cards from dictionary
-router.get('/dictionary/:id/card_list', CardController.cardList);
-
 //one card
 router.get('/card/:id', CardController.card);
 

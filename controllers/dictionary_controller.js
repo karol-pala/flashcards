@@ -2,6 +2,7 @@ const Dictionary = require('../models/dictionary')
 const Card = require('../models/card')
 
 const validator = require('express-validator')
+const async = require('async');
 
 //shows all dictonaries
 exports.dictionaryList = function(req, res){
@@ -18,15 +19,17 @@ exports.dictionaryList = function(req, res){
 //shows one dictionary
 exports.dictionary = function(req, res){
     const id = req.params.id;
-    Dictionary.findById(id).exec(function(err, response){
-        if(err){
-            res.render('index', {text: 'Databse error'})
-        } else {
-            res.render('dictionary', {
-                dict: response
-            })
+    async.parallel({
+        dictionary: function(callback){
+            Dictionary.findById(id, callback)
+        },
+        cards: function(callback){
+            Card.find({dictionary: id}, callback)
         }
-    })
+    }, function(err, results) {
+        res.render('dictionary', {error: err, dictionary: results.dictionary, cards: results.cards})
+    }
+    )
 }
 
 
@@ -81,7 +84,7 @@ exports.dictionaryUpdateGet = function(req, res){
 exports.dictionaryUpdatePost = function(req, res){
     Dictionary.findByIdAndUpdate(req.params.id, req.body, function(err, response){
         if(err) res.send(`Error in updating dictionary with id: ${req.params.id}`)
-        res.redirect('/');
+        res.redirect(`/catalog/dictionary/${req.params.id}`);
     })
 }
 

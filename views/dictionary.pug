@@ -2,11 +2,23 @@ extends layout
 
 block content
     div
-        h2=dict.name
-        h3=dict.author
-        p=dict.description
-        a(href=dict.update) Update
-        a(href=dict.cards) Show cards
-        a(href=dict.create_card) Add card
-        form(action=dict.delete, method="POST")
-            button(type="submit") Delete
+        h2=dictionary.name
+        h3=dictionary.author
+        p=dictionary.decsription
+        div
+            a(href=dictionary.create_card) add card
+            a(href=dictionary.update) Update
+            form(action=dictionary.delete, method="POST")
+                button(type='submit') Delete
+        ul
+            each val in cards
+                li
+                    article
+                        div
+                            p=val.firstSide
+                            p=val.secondSide
+                        div
+                            a(href=val.update) update
+                            form(action=val.delete, method='POST')
+                                button(type='submit') delete
+        

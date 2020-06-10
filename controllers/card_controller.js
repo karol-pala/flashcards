@@ -2,17 +2,6 @@ const Card = require('../models/card');
 
 const NOT_IMPLEMENTED = "NOT IMPLEMENTED";
 
-//show list of cards, based on dictionary id field in CardSchema
-exports.cardList = function(req, res) {
-    Card.find({dictionary: req.params.id})
-    .exec(function(err, response){
-        if(err){
-            res.render('index', {text: 'Database error'})
-        } else {
-            res.render('card_list', {data: response});
-        }
-    })
-}
 
 //show one card, based on dictionary id field in CardSchema and card id
 exports.card = function(req, res) {
@@ -43,7 +32,7 @@ exports.cardCreatePost = function(req, res){
         if(err){
             res.render('index', {text: 'Database error'})
         } else {
-            res.redirect('/')
+            res.redirect(`/catalog/dictionary/${req.params.id}`)
         }
     })
 }
@@ -55,7 +44,7 @@ exports.cardDeletePost = function(req, res){
         if(err){
             res.render('index', {text: "database error"})
         } else {
-            res.redirect('/')
+            res.redirect(`/catalog/dictionary/${req.params.id}`)
         }
     })
 }
@@ -78,7 +67,7 @@ exports.cardUpdatePost = function(req, res){
         if(err){
             res.render('index', {text: "database error"})
         } else {
-            res.redirect('/')
+            res.redirect(`/catalog/dictionary/${req.params.id}`)
         }
     })
 }
