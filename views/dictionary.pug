@@ -1,24 +1,24 @@
 extends layout
 
 block content
-    div
-        h2=dictionary.name
-        h3=dictionary.author
-        p=dictionary.decsription
-        div
-            a(href=dictionary.create_card) add card
-            a(href=dictionary.update) Update
-            form(action=dictionary.delete, method="POST")
-                button(type='submit') Delete
-        ul
+    div(class='dictionary')
+        h2(class='dictionary__title') #{dictionary.name}
+        h3(class='dictionary__author') #{dictionary.author}
+        p(class='dictionary__description') #{dictionary.decsription}
+        div(class='dictionary__buttons')
+            a(href=dictionary.create_card class='dictionary__button add') add card
+            a(href=dictionary.update class='dictionary__button update') Update
+            form(action=dictionary.delete, method="POST" class='dictionary__form__delete')
+                button(type='submit' class='dictionary__button delete') Delete
+        ul(class='card__list')
             each val in cards
-                li
-                    article
-                        div
-                            p=val.firstSide
-                            p=val.secondSide
-                        div
-                            a(href=val.update) update
-                            form(action=val.delete, method='POST')
-                                button(type='submit') delete
+                li(class='card__item')
+                    article(class='card__article')
+                        div(class='card__info')
+                            p(class='card__firstSide') #{val.firstSide}
+                            p(class='card__secondSide') #{val.secondSide}
+                        div(class='card__buttons')
+                            a(href=val.update class='card__button update') update
+                            form(action=val.delete, method='POST' class='card__form__delete')
+                                button(type='submit' class='card__button delete') delete
         

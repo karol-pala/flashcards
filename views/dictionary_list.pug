@@ -1,13 +1,14 @@
 extends layout
 
 block content
-    h1=title
-    ul
+    h1(class='title') #{title}
+    ul(class='dictionary__list')
         each val in dict_list
-            li
-                h2 #{val.name}
-                h3 #{val.author}
-                p #{val.description}
-                a(href=val.show) Show
+            li(class='dictionary__item')
+                h2(class='dictionary__title') #{val.name}
+                h3(class='dictionary__author') #{val.author}
+                p(class='dictionary__description') #{val.description}
+                a(href=val.show class='dictionary__link') Show
         else
-            li There is no dictonaries in this database
+            li(class='dictionary__item')
+                p There is no dictonaries in this database

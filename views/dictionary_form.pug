@@ -1,11 +1,16 @@
 extends layout
 
 block content
-    div
-        h2=text
-        form(action = action, method = method)
-            each val in inputs
-                div
-                    label(for = val) #{val}
-                    input(name = val)
-            button(type='submit') Send
+    div(class='dictionary__create')
+        h2(class='dictionary__title') create dictionary
+        form(action = action method = 'POST' class='dictionary__form__create')
+            div(class='dictionary__form__item')
+                label(for='name' class='dictionary__form__label') name
+                input(name = 'name' class='dictionary__form__input')
+            div(class='dictionary__form__item')
+                label(for = 'author' class='dictionary__form__label')
+                input(name = 'author' class='dictionary__form__input')
+            div(class='dictionary__form__item')
+                label(for = 'description' class='dictionary__form__label')
+                input(name = 'description' class='dictionary__form__input')
+            button(type='submit' class='dictionary__form__submit') Send

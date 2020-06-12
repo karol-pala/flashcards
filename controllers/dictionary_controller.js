@@ -36,10 +36,7 @@ exports.dictionary = function(req, res){
 //sends form for dictionary
 exports.dictionaryCreateGet = function(req, res){
     res.render('dictionary_form', {
-        action: "/catalog/dictionary/create", 
-        method: "POST",
-        text: "create dictionary",
-        inputs: ['name', 'author', 'description']
+        action: "/catalog/dictionary/create"
     })
 }
 
@@ -72,9 +69,7 @@ exports.dictionaryUpdateGet = function(req, res){
     Dictionary.findById(id).exec(function(err, dict){
         if(err) return next(err);
         res.render('dictionary_update', {
-            text: 'update form',
             action: dict.url,
-            method: "POST",
             dict: dict
         })
     })

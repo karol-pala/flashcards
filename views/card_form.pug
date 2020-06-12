@@ -1,12 +1,13 @@
 extends layout
 
 block content
-    form(action = action, method = "POST")
-        div
-            label(for = 'firstSide') first side
-            input(name = 'firstSide')
-        div
-            label(for = 'secondSide') second side
-            input(name = 'secondSide')
-        div
-            button(type = 'submit') Send
+    div(class='card__create')
+        h2(class='card__title') create card
+        form(action = action, method = "POST" class='card__form__create')
+            div(class='card__form__item')
+                label(for = 'firstSide' class='card__form__label') first side
+                input(name = 'firstSide' class='card__form__input')
+            div(class='card__form__item')
+                label(for = 'secondSide' class='card__form__label') second side
+                input(name = 'secondSide' class='card__form__input')
+            button(type = 'submit' class='card__form__submit') Send
