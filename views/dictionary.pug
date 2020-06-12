@@ -15,8 +15,8 @@ block content
                 li(class='card__item')
                     article(class='card__article')
                         div(class='card__info')
-                            p(class='card__firstSide') #{val.firstSide}
-                            p(class='card__secondSide') #{val.secondSide}
+                            p(class='card__firstSide') first side: #{val.firstSide}
+                            p(class='card__secondSide') second side: #{val.secondSide}
                         div(class='card__buttons')
                             a(href=val.update class='card__button update') update
                             form(action=val.delete, method='POST' class='card__form__delete')

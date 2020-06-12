@@ -92,15 +92,21 @@
 }
 
 .card__list{
- grid-column: 1 / 3;
+    grid-column: 1 / 3;
+    list-style: none;
 }
 
 .card__item{
-
+    margin: 3px;
+    padding: 7px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .card__article{
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
 }
 
 .card__info{
@@ -120,7 +126,12 @@
 }
 
 .card__button{
-
+    border: 1px solid black;
+    margin: 10px;
+    width: 100px;
+    padding: 4px 10px;
+    background-color: lightgray;
+    font-size: 16px;
 }
 
 .card__form__delete{
@@ -132,4 +143,17 @@
 }
 
 @media screen and (max-width: 500px){
+    .title{
+        padding: 10px;
+        margin: 0;
+        font-size: 1em;
+    }
+    .dictionary__list{
+        padding: 10px;
+        margin: 0;
+    }
+    .dictionary{
+        padding: 10px;
+        margin: 0;
+    }
 }

@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li, ol, form, button, body, a{
     text-decoration: none;
 }
 
-body{
+body, button{
     font-family: 'Lexend Tera', sans-serif;
 }
 
