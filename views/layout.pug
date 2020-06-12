@@ -1,16 +1,21 @@
 html
     head
         title Flashcards
+        meta(name='viewport' content='width=device-width, initial-scale=1')
         link(rel='stylesheet' href='/styles/layout.css' type='text/css')
-    body
+        link(rel='stylesheet' href='/styles/dictionary.css' type='text/css')
+        link(rel='stylesheet' href='/styles/forms.css' type='text/css')
+    body(class='default')
         header(class='header layout')
-            h1(class='header__title') flashcards
+            h1(class='header__title') 
+                span(class='header__title__part') flash
+                span(class='header__title__part') cards
             nav(class='menu')
                 ul(class='menu__list')
                     li(class='menu__item')
-                        a(href='/catalog', class='menu__link') Home
+                        a(href='/catalog', class='menu__link') home
                     li(class='menu__item')
-                        a(href='/catalog/dictionary/create', class='menu__link') Create
+                        a(href='/catalog/dictionary/create', class='menu__link') create
         section(class='container layout')
             block content
         footer(class='footer layout')

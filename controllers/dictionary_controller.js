@@ -10,7 +10,6 @@ exports.dictionaryList = function(req, res){
         .exec(function(err, list){
             if(err) {return next(err)}
             res.render('dictionary_list', {
-                title: "Dictonaries",
                 dict_list: list
             })
         })

@@ -1,21 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap');
+
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, form, button, body, a{
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Lexend Tera', sans-serif;
+}
+
 /* min: 1001px, max: inf */
+
 .layout{
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
+    grid-template-columns: .5fr 1fr 3fr 1fr .5fr;
 }
 
 .header{
     grid-template-rows: auto auto;
+    border-bottom: 1px solid black;
 }
 
 .header__title{
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     padding: 10px;
+    margin: 15px;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .menu{
-    grid-column: 3 / 4;
+    grid-column: 2 / 5;
     grid-row: 2 / 3;
 }
 
@@ -27,24 +49,62 @@
 }
 
 .menu__item{
-
+    padding: 10px 20px;
+    margin: 2px;
+    text-align: center;
 }
 
 .menu__link{
-
+    text-align: center;
 }
 
 .container{
     grid-template-rows: auto auto;
 }
 
-.footer{
-}
-
-@media screen and (max-width: 500px){
-
-}
 
 @media screen and (min-width: 501px) and (max-width: 1000px){
 
+}
+
+@media screen and (max-width: 500px){
+    .header{
+        margin: 5px;
+        padding: 5px;
+        height: 40px;
+        grid-template-rows: auto;
+        overflow: hidden;
+    }
+    .header__title{
+        margin: 0;
+        padding: 0;
+        font-size: 3em;
+        animation-duration: 3s;
+        animation-name: disappear;
+        position: absolute;
+        left: -10px;
+        z-index: 3;
+        display: flex;
+        background-color: white;
+        width: calc(100% + 10px);
+        height: 0;
+        flex-direction: column;
+        text-align: center;
+        overflow: hidden;
+    }
+    .menu{
+        grid-row: 1 / 2;
+    }
+    @keyframes disappear {
+        from {
+            height: 100%;
+            padding-top: 40%;
+            grid-row: 3 / 4;        
+
+        }
+        to {
+            padding-top: 0;
+            height: 0%;
+        }
+    }
 }
