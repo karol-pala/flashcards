@@ -4,12 +4,13 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
 const app = express();
+const ENV = require('./ENV');
 
 const catalogRouter = require('./routes/catalog')
 
 //connect to mongo
 const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_URI;
+const mongoDB = ENV.MONGODB_URI;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "MongoDB connection error:"));
