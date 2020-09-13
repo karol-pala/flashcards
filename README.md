@@ -1,2 +1,2 @@
 # flashcards
-app for playing flashcards, not finished
+app for playing flashcards, unfinished
